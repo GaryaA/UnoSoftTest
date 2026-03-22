@@ -1,0 +1,53 @@
+services:
+
+  cassandra1:
+    build:
+      context: ./cassandra
+      secrets:
+        - ssh_root_password
+    container_name: cassandra1
+    environment:
+      - CASSANDRA_CLUSTER_NAME=TestCluster
+      - CASSANDRA_BROADCAST_ADDRESS=192.168.1.200
+    networks:
+      cassandra_net:
+        ipv4_address: 192.168.1.200
+
+#  cassandra2:
+#    image:
+#      cassandra:4.1
+#    container_name: cassandra2
+#    environment:
+#      - CASSANDRA_CLUSTER_NAME=TestCluster
+#      - CASSANDRA_SEEDS=cassandra1
+#      - CASSANDRA_BROADCAST_ADDRESS=192.168.1.201
+#    networks:
+#      cassandra_net:
+#        ipv4_address: 192.168.1.201
+#
+#  cassandra3:
+#    image: cassandra:4.1
+#    container_name: cassandra3
+#    environment:
+#      - CASSANDRA_CLUSTER_NAME=TestCluster
+#      - CASSANDRA_SEEDS=cassandra1
+#      - CASSANDRA_BROADCAST_ADDRESS=192.168.1.202
+#    networks:
+#      cassandra_net:
+#        ipv4_address: 192.168.1.202
+
+networks:
+  cassandra_net:
+    driver: ipvlan
+    driver_opts:
+      parent: ipvlan0
+      ipvlan_mode: l2
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+          gateway: 192.168.1.1
+          ip_range: 192.168.1.192/28
+
+secrets:
+  ssh_root_password:
+    file: ./ssh_root_password.txt
