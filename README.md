@@ -8,7 +8,7 @@ Docker Compose скрипт для развертки кластера из тр
 - ip link set ipvlan0 up
 - ip route add 192.168.1.192/28 dev ipvlan0
 
-Создать файл ./ssh_root_password с паролем
+Создать файл ./ssh_root_password.txt с паролем
 
 Запуск
 - docker compose up --build
