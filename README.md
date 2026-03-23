@@ -15,6 +15,6 @@ Docker Compose скрипт для развертки кластера из тр
 
 Доступ по ssh с хоста:
 
-![img.png](img.png)
+![](img.png)
 
 Окатить маршруты ./rollbackRoutes.sh
