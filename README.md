@@ -14,6 +14,7 @@ Docker Compose скрипт для развертки кластера из тр
 - docker compose up --build
 
 Доступ по ssh с хоста:
-![Скриншот доступа по ssh с хоста](./img.png)
+
+[//]: # (![]&#40;img.png&#41;)
 
 Окатить маршруты ./rollbackRoutes.sh
